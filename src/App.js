@@ -4,8 +4,7 @@ import "./App.css";
 import Input from "./components/Input";
 import Weather from "./components/Weather";
 
-// const API_KEY = process.env.REACT_APP_API_KEY;
-const API_KEY = "HYGuuhLbYuKhFE6nMAzNTyA0KhT4fsh8"
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 
 const getLocation = async (nameOfCity) => {
