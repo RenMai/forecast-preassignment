@@ -1,2 +1,2 @@
 # A simple weather forecast website
-![Screenshot!](/screenshot.png "Screenshot)
+![Screenshot!](./screenshot.png "Screenshot)
