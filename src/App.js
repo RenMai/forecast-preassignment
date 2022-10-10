@@ -16,6 +16,7 @@ const getLocation = async (nameOfCity) => {
     const locationKey = locationObj[0].Key;
     return locationKey;
   } catch (e) {
+    alert("City name not found");
     throw new Error(e);
   }
 };
