@@ -6,7 +6,6 @@ import Weather from "./components/Weather";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
-
 const getLocation = async (nameOfCity) => {
   try {
     const text = nameOfCity.toLowerCase();
@@ -58,7 +57,7 @@ function App() {
     }
   };
 
-  // Use callback to memorize the function, avoid to re-render the function after the 1st time creation
+  // Use callback to memorize the function, avoid to re-render the function after the 1st time creation 
   const onInputHandlerChange = useCallback((event) => {
     debouncedFunc(event, changeHandler);
   }, []);
