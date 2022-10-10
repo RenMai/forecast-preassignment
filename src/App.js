@@ -15,7 +15,6 @@ const getLocation = async (nameOfCity) => {
     const locationKey = locationObj[0].Key;
     return locationKey;
   } catch (e) {
-    alert("City name not found");
     throw new Error(e);
   }
 };
@@ -57,7 +56,7 @@ function App() {
     }
   };
 
-  // Use callback to memorize the function, avoid to re-render the function after the 1st time creation 
+  // Use callback to memorize the function, avoid to re-render the function after the 1st time creation
   const onInputHandlerChange = useCallback((event) => {
     debouncedFunc(event, changeHandler);
   }, []);

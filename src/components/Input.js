@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { getCoordintes } from "../helper/utility";
-let message = "";
 
 const Input = ({
   onInputHandlerChange,
@@ -12,6 +11,16 @@ const Input = ({
   const inputRef = useRef(null);
   const [currentCity, setCurrentCity] = useState("");
 
+  const handleKeyDown = (event) => {
+    const str = inputRef.current.value;
+    // Check if the input value is NOT empty string
+    if (typeof str === "string" && str.length !== 0) {
+      if (event.key === "Enter") {
+        updateWeatherHandler();
+      }
+    }
+  };
+
   useEffect(() => {
     if (currentCity !== "") {
       inputRef.current.value = currentCity;
@@ -21,6 +30,7 @@ const Input = ({
   const handleSelectCurrentLocation = async () => {
     getCoordintes(changeHandler, setCurrentCity);
   };
+
   return (
     <div>
       <h2 className="w3-text-blue">Weather Forecast</h2>
@@ -29,7 +39,7 @@ const Input = ({
           <label className="w3-text-blue">
             <b>City</b>
           </label>
-          <form style={{ display: "flex" }}>
+          <p style={{ display: "flex" }}>
             <input
               ref={inputRef}
               className="w3-input w3-border"
@@ -37,8 +47,10 @@ const Input = ({
               onChange={(event) => {
                 onInputHandlerChange(event);
               }}
-              
               type="text"
+              onKeyDown={(e) => {
+                handleKeyDown(e);
+              }}
             />
             <button
               style={{
@@ -51,10 +63,10 @@ const Input = ({
             >
               <i className="fa fa-map-marker" aria-hidden="true"></i>
             </button>
-          </form>
+          </p>
         </div>
         <p>
-          <button id="submitBtn"
+          <button
             className="w3-btn w3-blue"
             onClick={() => updateWeatherHandler()}
             disabled={query.length < 1 || btnDisable}
